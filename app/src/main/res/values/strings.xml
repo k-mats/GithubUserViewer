@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GithubUserViewer</string>
+
+    <string name="cardview_id_text">ID: %1$d</string>
 </resources>
