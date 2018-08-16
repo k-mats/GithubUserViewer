@@ -3,25 +3,27 @@ package jp.kmats.android.githubuserviewer.presentation.list
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import jp.kmats.android.githubuserviewer.R
-import jp.kmats.android.githubuserviewer.data.datasource.GithubUserRemoteDataSource
 import jp.kmats.android.githubuserviewer.data.entity.GithubUser
-import jp.kmats.android.githubuserviewer.domain.GithubUserRepository
 import kotlinx.android.synthetic.main.activity_list.*
 
-class ListActivity : AppCompatActivity() {
+class ListActivity : AppCompatActivity(), ListContract.View {
+
+    private val presenter: ListContract.Presenter = ListPresenter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
+        presenter.onCreate()
+    }
 
-        val repo: GithubUserRepository = GithubUserRemoteDataSource()
-        repo.getGithubUserList()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::setupRecyclerView)
+    override fun onDestroy() {
+        presenter.onDestroy()
+        super.onDestroy()
+    }
+
+    override fun onGithubUserListFetched(users: List<GithubUser>) {
+        setupRecyclerView(users)
     }
 
     private fun setupRecyclerView(users: List<GithubUser>) {
