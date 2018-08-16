@@ -1,9 +1,10 @@
-package jp.kmats.android.githubuserviewer
+package jp.kmats.android.githubuserviewer.presentation.list
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import jp.kmats.android.githubuserviewer.R
 
-class MainActivity : AppCompatActivity() {
+class ListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
