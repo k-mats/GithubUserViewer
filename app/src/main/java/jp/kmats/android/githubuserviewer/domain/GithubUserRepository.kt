@@ -7,5 +7,5 @@ interface GithubUserRepository {
 
     fun getGithubUser(loginId: String): Observable<GithubUser>
 
-    fun getGithubUserList(lastSeenId: String): Observable<List<GithubUser>>
+    fun getGithubUserList(lastSeenNumericId: Long): Observable<List<GithubUser>>
 }

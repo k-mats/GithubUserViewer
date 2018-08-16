@@ -6,5 +6,5 @@ object GithubAPI {
 
     fun getUser(loginId: String) = "$USERS_URL/$loginId"
 
-    fun getUserList(lastSeenId: String) = "$USERS_URL?since=$lastSeenId"
+    fun getUserList(lastSeenNumericId: Long) = "$USERS_URL?since=$lastSeenNumericId"
 }

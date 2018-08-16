@@ -33,11 +33,11 @@ class GithubUserRemoteDataSource : GithubUserRepository {
         }
     }
 
-    override fun getGithubUserList(lastSeenId: String): Observable<List<GithubUser>> {
+    override fun getGithubUserList(lastSeenNumericId: Long): Observable<List<GithubUser>> {
         return Observable.create { emitter ->
             val client = OkHttpClient()
             val request = Request.Builder()
-                    .url(GithubAPI.getUserList(lastSeenId))
+                    .url(GithubAPI.getUserList(lastSeenNumericId))
                     .build()
 
             client.newCall(request).enqueue(object : Callback {
