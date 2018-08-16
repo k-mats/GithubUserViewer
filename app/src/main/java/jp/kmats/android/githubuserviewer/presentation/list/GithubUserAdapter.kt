@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import jp.kmats.android.githubuserviewer.R
 import jp.kmats.android.githubuserviewer.data.entity.GithubUser
 import kotlinx.android.synthetic.main.view_githubuser_card.view.*
@@ -23,7 +24,8 @@ class GithubUserAdapter(private val users: List<GithubUser>, private val context
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
         val user = users[position]
-        Glide.with(context).load(user.avatarUrl).into(holder.avatarImageView)
+        val glideOptions = RequestOptions().circleCrop().placeholder(R.drawable.avatar_placeholder)
+        Glide.with(context).load(user.avatarUrl).apply(glideOptions).into(holder.avatarImageView)
     }
 
     class CardViewHolder(cardView: View) : RecyclerView.ViewHolder(cardView) {
