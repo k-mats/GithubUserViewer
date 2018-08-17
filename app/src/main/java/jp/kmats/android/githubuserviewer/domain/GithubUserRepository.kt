@@ -5,8 +5,6 @@ import jp.kmats.android.githubuserviewer.data.entity.GithubUser
 
 interface GithubUserRepository {
 
-    fun getGithubUser(loginId: String): Observable<GithubUser>
-
     /**
      * The "last seen numeric ID 0" equals to no `since` parameter.
      * Thus both urls below returns the same json.
