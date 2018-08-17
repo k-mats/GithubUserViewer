@@ -1,4 +1,4 @@
-package jp.kmats.android.githubuserviewer.presentation.list
+package jp.kmats.android.githubuserviewer.presentation.list.adapter
 
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

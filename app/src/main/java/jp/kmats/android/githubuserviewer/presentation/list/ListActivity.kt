@@ -7,6 +7,7 @@ import android.widget.Toast
 import com.paginate.Paginate
 import jp.kmats.android.githubuserviewer.R
 import jp.kmats.android.githubuserviewer.data.entity.GithubUser
+import jp.kmats.android.githubuserviewer.presentation.list.adapter.GithubUserAdapter
 import kotlinx.android.synthetic.main.activity_list.*
 import timber.log.Timber
 

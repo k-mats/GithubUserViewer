@@ -1,4 +1,4 @@
-package jp.kmats.android.githubuserviewer.presentation.list
+package jp.kmats.android.githubuserviewer.presentation.list.adapter
 
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView

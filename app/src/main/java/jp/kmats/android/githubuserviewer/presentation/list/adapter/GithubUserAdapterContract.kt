@@ -1,4 +1,4 @@
-package jp.kmats.android.githubuserviewer.presentation.list
+package jp.kmats.android.githubuserviewer.presentation.list.adapter
 
 import jp.kmats.android.githubuserviewer.data.entity.GithubUserDetail
 
