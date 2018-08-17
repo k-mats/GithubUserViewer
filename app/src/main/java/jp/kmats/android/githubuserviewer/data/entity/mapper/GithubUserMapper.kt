@@ -11,9 +11,9 @@ object GithubUserMapper {
         return moshi.adapter(GithubUser::class.java).fromJson(json)
     }
 
-    fun mapUserList(json: String): List<GithubUser>? {
+    fun mapUserList(json: String): ArrayList<GithubUser>? {
         val type = Types.newParameterizedType(List::class.java, GithubUser::class.java)
-        val adapter: JsonAdapter<List<GithubUser>> = moshi.adapter(type)
+        val adapter: JsonAdapter<ArrayList<GithubUser>> = moshi.adapter(type)
         return adapter.fromJson(json)
     }
 }

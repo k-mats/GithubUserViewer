@@ -6,7 +6,13 @@ interface ListContract {
 
     interface View {
 
-        fun onGithubUserListFetched(users: List<GithubUser>)
+        fun onGithubUserListFetchedFirst(users: ArrayList<GithubUser>)
+
+        fun onGithubUserListFetchedMore(users: ArrayList<GithubUser>)
+
+        fun onGithubUserListFetchError(throwable: Throwable)
+
+        fun onGithubUserListFetchComplete()
     }
 
     interface Presenter {
@@ -14,5 +20,11 @@ interface ListContract {
         fun onCreate()
 
         fun onDestroy()
+
+        fun onLoadMore(lastSeenNumericalId: Long)
+
+        fun isLoading(): Boolean
+
+        fun hasLoadedAllItems(): Boolean
     }
 }

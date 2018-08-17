@@ -13,7 +13,7 @@ import jp.kmats.android.githubuserviewer.R
 import jp.kmats.android.githubuserviewer.data.entity.GithubUser
 import kotlinx.android.synthetic.main.view_githubuser_card.view.*
 
-class GithubUserAdapter(private val users: List<GithubUser>, private val context: Context) : RecyclerView.Adapter<GithubUserAdapter.CardViewHolder>() {
+class GithubUserAdapter(private val users: ArrayList<GithubUser>, private val context: Context) : RecyclerView.Adapter<GithubUserAdapter.CardViewHolder>() {
 
     override fun getItemCount(): Int = users.size
 
@@ -33,6 +33,16 @@ class GithubUserAdapter(private val users: List<GithubUser>, private val context
 
         val idText = context.resources.getString(R.string.cardview_id_text)
         holder.numericalIdTextView.text = String.format(idText, user.numericalId)
+    }
+
+    fun showMoreUsers(additionalUsers: ArrayList<GithubUser>) {
+        val positionStart = users.size
+        users.addAll(additionalUsers)
+        notifyItemRangeInserted(positionStart, additionalUsers.size)
+    }
+
+    fun getLastUsersNumericalId(): Long {
+        return users.last().numericalId
     }
 
     class CardViewHolder(cardView: View) : RecyclerView.ViewHolder(cardView) {

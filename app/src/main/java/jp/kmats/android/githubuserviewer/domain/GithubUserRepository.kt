@@ -13,5 +13,5 @@ interface GithubUserRepository {
      * - https://api.github.com/users
      * - https://api.github.com/users?since=0
      */
-    fun getGithubUserList(lastSeenNumericId: Long = 0): Observable<List<GithubUser>>
+    fun getGithubUserList(lastSeenNumericId: Long = 0): Observable<ArrayList<GithubUser>>
 }
