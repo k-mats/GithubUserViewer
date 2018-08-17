@@ -11,6 +11,10 @@ interface GithubUserAdapterContract {
         fun onGithubUserDetailFetchError(throwable: Throwable)
 
         fun onGithubUserDetailFetchComplete()
+
+        fun onLoadingStart()
+
+        fun onLoadingFinish()
     }
 
     interface Presenter {

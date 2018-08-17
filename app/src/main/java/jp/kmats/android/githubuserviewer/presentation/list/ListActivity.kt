@@ -3,6 +3,7 @@ package jp.kmats.android.githubuserviewer.presentation.list
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import android.widget.Toast
 import com.paginate.Paginate
 import jp.kmats.android.githubuserviewer.R
@@ -45,6 +46,14 @@ class ListActivity : AppCompatActivity(), ListContract.View, Paginate.Callbacks 
     }
 
     override fun onGithubUserListFetchComplete() {
+    }
+
+    override fun onLoadingStart() {
+        progressBar.visibility = View.VISIBLE
+    }
+
+    override fun onLoadinFinish() {
+        progressBar.visibility = View.INVISIBLE
     }
 
     override fun onLoadMore() {

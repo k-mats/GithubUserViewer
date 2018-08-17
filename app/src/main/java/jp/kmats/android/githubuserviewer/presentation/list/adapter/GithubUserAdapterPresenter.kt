@@ -20,6 +20,8 @@ class GithubUserAdapterPresenter(val view: GithubUserAdapterContract.View) : Git
         repository.getGithubUserDetail(loginId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { view.onLoadingStart() }
+                .doFinally { view.onLoadingFinish() }
                 .subscribe({ userDetail ->
                     view.onGithubUserDetailFetched(userDetail)
                 }, { throwable ->

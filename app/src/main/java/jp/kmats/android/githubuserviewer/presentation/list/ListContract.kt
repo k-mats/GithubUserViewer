@@ -13,6 +13,10 @@ interface ListContract {
         fun onGithubUserListFetchError(throwable: Throwable)
 
         fun onGithubUserListFetchComplete()
+
+        fun onLoadingStart()
+
+        fun onLoadinFinish()
     }
 
     interface Presenter {

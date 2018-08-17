@@ -15,10 +15,16 @@ class ListPresenter(val view: ListContract.View) : ListContract.Presenter {
 
     override fun onCreate() {
         repository.getGithubUserList()
-                .doOnSubscribe { loading = true }
-                .doFinally { loading = false }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe {
+                    loading = true
+                    view.onLoadingStart()
+                }
+                .doFinally {
+                    loading = false
+                    view.onLoadinFinish()
+                }
                 .subscribe({ users ->
                     view.onGithubUserListFetchedFirst(users)
                 }, { throwable ->

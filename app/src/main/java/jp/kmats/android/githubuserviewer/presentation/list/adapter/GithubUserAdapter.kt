@@ -14,6 +14,7 @@ import jp.kmats.android.githubuserviewer.R
 import jp.kmats.android.githubuserviewer.data.entity.GithubUser
 import jp.kmats.android.githubuserviewer.data.entity.GithubUserDetail
 import jp.kmats.android.githubuserviewer.presentation.detail.DetailDialogFragment
+import kotlinx.android.synthetic.main.activity_list.*
 import kotlinx.android.synthetic.main.view_githubuser_card.view.*
 import timber.log.Timber
 
@@ -56,6 +57,14 @@ class GithubUserAdapter(private val users: ArrayList<GithubUser>, private val ac
     }
 
     override fun onGithubUserDetailFetchComplete() {
+    }
+
+    override fun onLoadingStart() {
+        activity.progressBar.visibility = View.VISIBLE
+    }
+
+    override fun onLoadingFinish() {
+        activity.progressBar.visibility = View.INVISIBLE
     }
 
     fun showMoreUsers(additionalUsers: ArrayList<GithubUser>) {
