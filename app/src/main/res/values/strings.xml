@@ -2,4 +2,16 @@
     <string name="app_name">GithubUserViewer</string>
 
     <string name="cardview_id_text">ID: %1$d</string>
+
+    <string name="no_name">No Name</string>
+    <string name="company_not_registered">Company not registered</string>
+    <string name="location_not_registered">Location not registered</string>
+    <string name="email_not_registered">Email not registered</string>
+    <string name="blog_not_registered">Blog not registered</string>
+
+    <string name="follow_status">Following: %1$d, Followers: %2$d</string>
+    <string name="repo_status">Public repos: %1$d, Public gists: %2$d</string>
+
+    <string name="hireable">Hireable NOW!</string>
+    <string name="not_hireable">Not hireable</string>
 </resources>

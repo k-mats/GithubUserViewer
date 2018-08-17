@@ -26,6 +26,7 @@ class ListActivity : AppCompatActivity(), ListContract.View, Paginate.Callbacks 
     override fun onDestroy() {
         presenter.onDestroy()
         paginate?.unbind()
+        adapter?.destroy()
         super.onDestroy()
     }
 
