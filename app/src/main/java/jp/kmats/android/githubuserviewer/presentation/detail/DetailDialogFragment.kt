@@ -11,7 +11,7 @@ import jp.kmats.android.githubuserviewer.R
 import jp.kmats.android.githubuserviewer.data.entity.GithubUserDetail
 import kotlinx.android.synthetic.main.fragment_detail_dialog.*
 
-class DetailDialogFragment : DialogFragment(), DetailContract.View {
+class DetailDialogFragment : DialogFragment() {
 
     private lateinit var userDetail: GithubUserDetail
 
@@ -28,6 +28,10 @@ class DetailDialogFragment : DialogFragment(), DetailContract.View {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        setupView(view)
+    }
+
+    private fun setupView(view: View) {
         val glideOptions = RequestOptions().circleCrop().placeholder(R.drawable.avatar_placeholder)
         Glide.with(view).load(userDetail.avatarUrl).apply(glideOptions).into(avatarImageView)
 
