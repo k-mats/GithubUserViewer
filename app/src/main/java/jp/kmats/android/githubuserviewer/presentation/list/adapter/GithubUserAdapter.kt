@@ -42,7 +42,7 @@ class GithubUserAdapter(private val users: ArrayList<GithubUser>, private val ac
         val idText = activity.resources.getString(R.string.cardview_id_text)
         holder.numericalIdTextView.text = String.format(idText, user.numericalId)
 
-        holder.itemView.setOnClickListener { presenter.onItemViewClick(user.loginId) }
+        holder.itemView.constraintLayout.setOnClickListener { presenter.onItemViewClick(user.loginId) }
     }
 
     override fun onGithubUserDetailFetched(userDetail: GithubUserDetail) {
