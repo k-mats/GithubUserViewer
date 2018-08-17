@@ -4,6 +4,7 @@ import io.reactivex.Observable
 import jp.kmats.android.githubuserviewer.data.entity.GithubUser
 import jp.kmats.android.githubuserviewer.data.entity.mapper.GithubUserMapper
 import jp.kmats.android.githubuserviewer.domain.GithubUserRepository
+import jp.kmats.android.githubuserviewer.exception.GithubAPIRateLimitExceedException
 import okhttp3.*
 import java.io.IOException
 
@@ -23,8 +24,12 @@ class GithubUserRemoteDataSource : GithubUserRepository {
 
                 override fun onResponse(call: Call, response: Response) {
                     response.body()?.string()?.let { json ->
-                        GithubUserMapper.mapUserList(json)?.let { githubUserList ->
-                            emitter.onNext(githubUserList)
+                        if (GithubAPI.isRateLimitExceeded(json)) {
+                            emitter.onError(GithubAPIRateLimitExceedException())
+                        } else {
+                            GithubUserMapper.mapUserList(json)?.let { githubUserList ->
+                                emitter.onNext(githubUserList)
+                            }
                         }
                     }
                     emitter.onComplete()

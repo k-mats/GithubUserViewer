@@ -7,4 +7,6 @@ object GithubAPI {
     fun getUserDetail(loginId: String) = "$USERS_URL/$loginId"
 
     fun getUserList(lastSeenNumericId: Long) = "$USERS_URL?since=$lastSeenNumericId"
+
+    fun isRateLimitExceeded(json: String) = json.contains("API rate limit exceeded")
 }
